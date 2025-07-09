@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\namle\\OneDrive\\Máy tính\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\MenMaxBackEnd.csproj": {}
+    "C:\\Users\\doduy\\Desktop\\clone\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\MenMaxBackEnd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\namle\\OneDrive\\Máy tính\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\MenMaxBackEnd.csproj": {
+    "C:\\Users\\doduy\\Desktop\\clone\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\MenMaxBackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\namle\\OneDrive\\Máy tính\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\MenMaxBackEnd.csproj",
+        "projectUniqueName": "C:\\Users\\doduy\\Desktop\\clone\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\MenMaxBackEnd.csproj",
         "projectName": "MenMaxBackEnd",
-        "projectPath": "C:\\Users\\namle\\OneDrive\\Máy tính\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\MenMaxBackEnd.csproj",
-        "packagesPath": "C:\\Users\\namle\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\namle\\OneDrive\\Máy tính\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\obj\\",
+        "projectPath": "C:\\Users\\doduy\\Desktop\\clone\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\MenMaxBackEnd.csproj",
+        "packagesPath": "C:\\Users\\doduy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\doduy\\Desktop\\clone\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\namle\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\doduy\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,12 +44,44 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.6.2, )"
@@ -74,7 +106,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
