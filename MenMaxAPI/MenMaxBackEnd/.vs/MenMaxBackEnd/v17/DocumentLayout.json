@@ -1,7 +1,36 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|c:\\users\\namle\\onedrive\\m\u00E1y t\u00EDnh\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|c:\\users\\namle\\onedrive\\m\u00E1y t\u00EDnh\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|c:\\users\\namle\\onedrive\\m\u00E1y t\u00EDnh\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|c:\\users\\namle\\onedrive\\m\u00E1y t\u00EDnh\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\menmaxbackend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\menmaxbackend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|c:\\users\\namle\\onedrive\\m\u00E1y t\u00EDnh\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\modelsdto\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\modelsdto\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|c:\\users\\namle\\onedrive\\m\u00E1y t\u00EDnh\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\models\\cart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\models\\cart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|c:\\users\\namle\\onedrive\\m\u00E1y t\u00EDnh\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\modelsdto\\cartdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\modelsdto\\cartdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +38,103 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CartDto.cs",
+              "DocumentMoniker": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\ModelsDTO\\CartDto.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\ModelsDTO\\CartDto.cs",
+              "ToolTip": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\ModelsDTO\\CartDto.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\ModelsDTO\\CartDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T16:47:09.673Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\appsettings.json",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\appsettings.json",
+              "ToolTip": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\appsettings.json",
+              "RelativeToolTip": "MenMaxBackEnd\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-09T17:39:50.082Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Program.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\Program.cs",
+              "ToolTip": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Program.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T17:39:45.565Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MenMaxBackEnd",
+              "DocumentMoniker": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\MenMaxBackEnd.csproj",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\MenMaxBackEnd.csproj",
+              "ToolTip": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\MenMaxBackEnd.csproj",
+              "RelativeToolTip": "MenMaxBackEnd\\MenMaxBackEnd.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-07-09T17:38:41.01Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Cart.cs",
+              "DocumentMoniker": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\Cart.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\Models\\Cart.cs",
+              "ToolTip": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\Cart.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\Models\\Cart.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T17:25:30.652Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProductDto.cs",
+              "DocumentMoniker": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\ModelsDTO\\ProductDto.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\ModelsDTO\\ProductDto.cs",
+              "ToolTip": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\ModelsDTO\\ProductDto.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\ModelsDTO\\ProductDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T17:18:01.304Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\Controllers\\CartController.cs",
+              "ToolTip": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Controllers\\CartController.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\Controllers\\CartController.cs",
+              "ViewState": "AgIAAIYAAAAAAAAAAAAgwJwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T16:41:54.334Z",
+              "EditorCaption": ""
             }
           ]
         }
