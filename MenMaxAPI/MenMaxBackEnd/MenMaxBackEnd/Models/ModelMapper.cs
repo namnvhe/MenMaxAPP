@@ -1,5 +1,7 @@
-﻿// Services/ModelMapper.cs - Phiên bản đã fix
-using AutoMapper;
+﻿using AutoMapper;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MenMaxBackEnd.Services
 {
@@ -42,6 +44,15 @@ namespace MenMaxBackEnd.Services
                 return new List<TDestination>();
 
             return _mapper.Map<List<TDestination>>(source);
+        }
+
+        // Thêm method để map specific collections
+        public List<TDestination> MapList<TDestination>(IEnumerable<object> source)
+        {
+            if (source == null)
+                return new List<TDestination>();
+
+            return source.Select(item => _mapper.Map<TDestination>(item)).ToList();
         }
     }
 }

@@ -110,7 +110,7 @@ namespace MenMaxBackEnd.Controllers
 
                     var mailMessage = new MailMessage
                     {
-                        From = new MailAddress("haovo1512@gmail.com"),
+                        From = new MailAddress("duonglthe170176@fpt.edu.vn"),
                         Subject = "Forgot Password",
                         Body = $"Your code is: {code}",
                         IsBodyHtml = false,

@@ -16,7 +16,7 @@ public partial class Category
 public class CategoryDto
 {
     public int Id { get; set; }
-    public string? CategoryName { get; set; }
-    public string? CategoryImage { get; set; }
-    public int ProductCount { get; set; }
+    public string CategoryName { get; set; }
+    public string CategoryImage { get; set; }
+    public List<ProductDto> Products { get; set; }
 }

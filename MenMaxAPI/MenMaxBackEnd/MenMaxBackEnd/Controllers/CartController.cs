@@ -29,13 +29,19 @@ namespace MenMaxBackEnd.Controllers
                 return BadRequest("User not found");
             }
 
+            // ✅ THÊM Include ProductImages ngay từ đầu
             var listCart = _context.Carts
                 .Include(c => c.Product)
+                    .ThenInclude(p => p.ProductImages) // ← Include ProductImages
                 .Include(c => c.User)
                 .Where(c => c.UserId == user_id)
                 .ToList();
 
-            var product = _context.Products.FirstOrDefault(p => p.Id == product_id);
+            // ✅ Include ProductImages khi lấy product
+            var product = _context.Products
+                .Include(p => p.ProductImages) // ← Include ProductImages
+                .FirstOrDefault(p => p.Id == product_id);
+
             if (product == null)
             {
                 return BadRequest("Product not found");
@@ -48,10 +54,16 @@ namespace MenMaxBackEnd.Controllers
             {
                 if (y.Product != null && y.Product.Id == product_id)
                 {
-                    y.Count = y.Count + count;
+                    y.Count = count;
                     _context.Carts.Update(y);
                     _context.SaveChanges();
-                    cart = y;
+
+                    // ✅ Reload cart với ProductImages
+                    cart = _context.Carts
+                        .Include(c => c.Product)
+                            .ThenInclude(p => p.ProductImages)
+                        .Include(c => c.User)
+                        .FirstOrDefault(c => c.Id == y.Id);
                     flag = 1;
                     break;
                 }
@@ -69,6 +81,7 @@ namespace MenMaxBackEnd.Controllers
                 _context.Carts.Add(newCart);
                 _context.SaveChanges();
 
+                // ✅ Đảm bảo include ProductImages
                 cart = _context.Carts
                     .Include(c => c.Product)
                         .ThenInclude(p => p.ProductImages)
@@ -76,10 +89,12 @@ namespace MenMaxBackEnd.Controllers
                     .FirstOrDefault(c => c.Id == newCart.Id);
             }
 
-            // Sử dụng ModelMapper để convert Cart sang CartDto
             var cartDto = _modelMapper.Map<Cart, CartDto>(cart);
             return Ok(cartDto);
         }
+
+
+
 
         [HttpGet("cartofuser")]
         public ActionResult<List<CartDto>> CartOfUser([FromQuery] string userId)
@@ -96,8 +111,8 @@ namespace MenMaxBackEnd.Controllers
                 .Where(c => c.UserId == userId)
                 .ToList();
 
-            // Sử dụng ModelMapper để convert List<Cart> sang List<CartDto>
-            var listCartDto = _modelMapper.Map<List<Cart>, List<CartDto>>(listCart);
+           
+            var listCartDto = _modelMapper.MapList<Cart, CartDto>(listCart);
 
             foreach (var cartDto in listCartDto)
             {

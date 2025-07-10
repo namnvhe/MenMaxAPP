@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MenMaxBackEnd")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b5ed0180b6574230b245b7b3375b06f777a74f3d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3fc40b3f642b49c9a130935f96c5deb4ed44775d")]
 [assembly: System.Reflection.AssemblyProductAttribute("MenMaxBackEnd")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MenMaxBackEnd")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

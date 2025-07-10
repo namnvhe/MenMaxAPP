@@ -13,3 +13,10 @@ public partial class ProductImage
 
     public virtual Product? Product { get; set; }
 }
+
+public class ProductImageDto
+{
+    public int Id { get; set; }
+    public string UrlImage { get; set; }
+    // public ProductDto Product { get; set; }
+}
