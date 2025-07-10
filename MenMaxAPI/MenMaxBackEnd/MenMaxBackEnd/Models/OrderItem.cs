@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace MenMaxBackEnd.Models;
 
@@ -13,6 +14,7 @@ public partial class OrderItem
 
     public int? ProductId { get; set; }
 
+    [JsonIgnore]
     public virtual Order? Order { get; set; }
 
     public virtual Product? Product { get; set; }

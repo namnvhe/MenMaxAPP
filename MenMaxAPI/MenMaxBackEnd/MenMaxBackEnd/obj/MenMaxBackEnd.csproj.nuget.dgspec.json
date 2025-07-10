@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\doduy\\Desktop\\clone\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\MenMaxBackEnd.csproj": {}
+    "C:\\Users\\namle\\OneDrive\\Máy tính\\MenMaxAPP1\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\MenMaxBackEnd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\doduy\\Desktop\\clone\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\MenMaxBackEnd.csproj": {
+    "C:\\Users\\namle\\OneDrive\\Máy tính\\MenMaxAPP1\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\MenMaxBackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\doduy\\Desktop\\clone\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\MenMaxBackEnd.csproj",
+        "projectUniqueName": "C:\\Users\\namle\\OneDrive\\Máy tính\\MenMaxAPP1\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\MenMaxBackEnd.csproj",
         "projectName": "MenMaxBackEnd",
-        "projectPath": "C:\\Users\\doduy\\Desktop\\clone\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\MenMaxBackEnd.csproj",
-        "packagesPath": "C:\\Users\\doduy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\doduy\\Desktop\\clone\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\obj\\",
+        "projectPath": "C:\\Users\\namle\\OneDrive\\Máy tính\\MenMaxAPP1\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\MenMaxBackEnd.csproj",
+        "packagesPath": "C:\\Users\\namle\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\namle\\OneDrive\\Máy tính\\MenMaxAPP1\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\doduy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\namle\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -106,7 +106,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
