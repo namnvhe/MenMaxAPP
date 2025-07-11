@@ -813,7 +813,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[MenMaxBackEnd.Models.Product, MenMaxBackEnd, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[MenMaxBackEnd.Models.ProductDto, MenMaxBackEnd, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -832,14 +832,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "product",
-        "Type": "MenMaxBackEnd.Models.Product",
+        "Name": "productDto",
+        "Type": "MenMaxBackEnd.Models.ProductDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "MenMaxBackEnd.Models.Product",
+        "Type": "MenMaxBackEnd.Models.ProductDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -865,7 +865,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "MenMaxBackEnd.Models.Product",
+        "Type": "MenMaxBackEnd.Models.ProductDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -889,14 +889,14 @@
         "IsRequired": true
       },
       {
-        "Name": "product",
-        "Type": "MenMaxBackEnd.Models.Product",
+        "Name": "productDto",
+        "Type": "MenMaxBackEnd.Models.ProductDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "MenMaxBackEnd.Models.Product",
+        "Type": "MenMaxBackEnd.Models.ProductDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -932,7 +932,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[MenMaxBackEnd.Models.Product, MenMaxBackEnd, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[MenMaxBackEnd.Models.ProductDto, MenMaxBackEnd, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -958,7 +958,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[MenMaxBackEnd.Models.Product, MenMaxBackEnd, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[MenMaxBackEnd.Models.ProductDto, MenMaxBackEnd, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -978,7 +978,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[MenMaxBackEnd.Models.Product, MenMaxBackEnd, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[MenMaxBackEnd.Models.ProductDto, MenMaxBackEnd, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1025,7 +1025,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[MenMaxBackEnd.Models.Product, MenMaxBackEnd, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[MenMaxBackEnd.Models.ProductDto, MenMaxBackEnd, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1056,7 +1056,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[MenMaxBackEnd.Models.Product, MenMaxBackEnd, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[MenMaxBackEnd.Models.ProductDto, MenMaxBackEnd, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

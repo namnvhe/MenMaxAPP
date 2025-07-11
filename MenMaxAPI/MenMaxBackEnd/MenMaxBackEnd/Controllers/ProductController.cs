@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MenMaxBackEnd.Models;
+using AutoMapper;
 
 namespace MenMaxBackEnd.Controllers
 {
@@ -9,14 +10,16 @@ namespace MenMaxBackEnd.Controllers
     public class ProductController : ControllerBase
     {
         private readonly MenMaxContext _context;
+        private readonly IMapper _mapper;
 
-        public ProductController(MenMaxContext context)
+        public ProductController(MenMaxContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         [HttpGet("newproduct")]
-        public ActionResult<List<Product>> NewProduct()
+        public ActionResult<List<ProductDto>> NewProduct()
         {
             // Lấy top 12 sản phẩm mới nhất theo ngày tạo
             var newProducts = _context.Products
@@ -27,11 +30,12 @@ namespace MenMaxBackEnd.Controllers
                 .Take(12)
                 .ToList();
 
-            return Ok(newProducts);
+            var productDtos = _mapper.Map<List<ProductDto>>(newProducts);
+            return Ok(productDtos);
         }
 
         [HttpGet("bestsellers")]
-        public ActionResult<List<Product>> BestSellers()
+        public ActionResult<List<ProductDto>> BestSellers()
         {
             // Lấy top 12 sản phẩm bán chạy nhất theo số lượng đã bán
             var bestSellers = _context.Products
@@ -42,11 +46,12 @@ namespace MenMaxBackEnd.Controllers
                 .Take(12)
                 .ToList();
 
-            return Ok(bestSellers);
+            var productDtos = _mapper.Map<List<ProductDto>>(bestSellers);
+            return Ok(productDtos);
         }
 
         [HttpGet("search")]
-        public ActionResult<List<Product>> Search(string searchContent)
+        public ActionResult<List<ProductDto>> Search(string searchContent)
         {
             if (string.IsNullOrEmpty(searchContent))
             {
@@ -63,12 +68,12 @@ namespace MenMaxBackEnd.Controllers
                 .OrderBy(p => p.ProductName)
                 .ToList();
 
-            return Ok(products);
+            var productDtos = _mapper.Map<List<ProductDto>>(products);
+            return Ok(productDtos);
         }
 
-        // Các method bổ sung từ ProductService interface
         [HttpGet]
-        public ActionResult<List<Product>> GetAllProducts()
+        public ActionResult<List<ProductDto>> GetAllProducts()
         {
             var products = _context.Products
                 .Include(p => p.Category)
@@ -77,11 +82,12 @@ namespace MenMaxBackEnd.Controllers
                 .OrderBy(p => p.ProductName)
                 .ToList();
 
-            return Ok(products);
+            var productDtos = _mapper.Map<List<ProductDto>>(products);
+            return Ok(productDtos);
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Product> GetProductById(int id)
+        public ActionResult<ProductDto> GetProductById(int id)
         {
             var product = _context.Products
                 .Include(p => p.Category)
@@ -93,19 +99,21 @@ namespace MenMaxBackEnd.Controllers
                 return NotFound();
             }
 
-            return Ok(product);
+            var productDto = _mapper.Map<ProductDto>(product);
+            return Ok(productDto);
         }
 
         [HttpPost]
-        public ActionResult<Product> SaveProduct([FromBody] Product product)
+        public ActionResult<ProductDto> SaveProduct([FromBody] ProductDto productDto)
         {
-            if (product == null)
+            if (productDto == null)
             {
                 return BadRequest("Product data is required");
             }
 
             try
             {
+                var product = _mapper.Map<Product>(productDto);
                 _context.Products.Add(product);
                 _context.SaveChanges();
 
@@ -115,7 +123,8 @@ namespace MenMaxBackEnd.Controllers
                     .Include(p => p.ProductImages)
                     .FirstOrDefault(p => p.Id == product.Id);
 
-                return Ok(savedProduct);
+                var savedProductDto = _mapper.Map<ProductDto>(savedProduct);
+                return Ok(savedProductDto);
             }
             catch (Exception ex)
             {
@@ -124,9 +133,9 @@ namespace MenMaxBackEnd.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult<Product> UpdateProduct(int id, [FromBody] Product product)
+        public ActionResult<ProductDto> UpdateProduct(int id, [FromBody] ProductDto productDto)
         {
-            if (product == null || id != product.Id)
+            if (productDto == null || id != productDto.Id)
             {
                 return BadRequest("Invalid product data");
             }
@@ -139,14 +148,8 @@ namespace MenMaxBackEnd.Controllers
 
             try
             {
-                // Cập nhật các thuộc tính
-                existingProduct.ProductName = product.ProductName;
-                existingProduct.Description = product.Description;
-                existingProduct.Price = product.Price;
-                existingProduct.Quantity = product.Quantity;
-                existingProduct.IsActive = product.IsActive;
-                existingProduct.IsSelling = product.IsSelling;
-                existingProduct.CategoryId = product.CategoryId;
+                // Map từ DTO sang entity, nhưng chỉ cập nhật các thuộc tính cần thiết
+                _mapper.Map(productDto, existingProduct);
 
                 _context.Products.Update(existingProduct);
                 _context.SaveChanges();
@@ -157,7 +160,8 @@ namespace MenMaxBackEnd.Controllers
                     .Include(p => p.ProductImages)
                     .FirstOrDefault(p => p.Id == id);
 
-                return Ok(updatedProduct);
+                var updatedProductDto = _mapper.Map<ProductDto>(updatedProduct);
+                return Ok(updatedProductDto);
             }
             catch (Exception ex)
             {
@@ -187,7 +191,7 @@ namespace MenMaxBackEnd.Controllers
         }
 
         [HttpGet("category/{categoryId}")]
-        public ActionResult<List<Product>> GetTop4ProductsByCategory(int categoryId)
+        public ActionResult<List<ProductDto>> GetTop4ProductsByCategory(int categoryId)
         {
             // Lấy top 4 sản phẩm theo category
             var products = _context.Products
@@ -200,11 +204,12 @@ namespace MenMaxBackEnd.Controllers
                 .Take(4)
                 .ToList();
 
-            return Ok(products);
+            var productDtos = _mapper.Map<List<ProductDto>>(products);
+            return Ok(productDtos);
         }
 
         [HttpGet("search/category")]
-        public ActionResult<List<Product>> SearchByNameAndCategory(string name, int categoryId)
+        public ActionResult<List<ProductDto>> SearchByNameAndCategory(string name, int categoryId)
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -222,7 +227,8 @@ namespace MenMaxBackEnd.Controllers
                 .OrderBy(p => p.ProductName)
                 .ToList();
 
-            return Ok(products);
+            var productDtos = _mapper.Map<List<ProductDto>>(products);
+            return Ok(productDtos);
         }
 
         // Pagination support
@@ -239,9 +245,11 @@ namespace MenMaxBackEnd.Controllers
                 .Take(pageSize)
                 .ToList();
 
+            var productDtos = _mapper.Map<List<ProductDto>>(products);
+
             var result = new
             {
-                Products = products,
+                Products = productDtos,
                 TotalCount = totalProducts,
                 Page = page,
                 PageSize = pageSize,
@@ -273,9 +281,11 @@ namespace MenMaxBackEnd.Controllers
                 .Take(pageSize)
                 .ToList();
 
+            var productDtos = _mapper.Map<List<ProductDto>>(products);
+
             var result = new
             {
-                Products = products,
+                Products = productDtos,
                 TotalCount = totalProducts,
                 Page = page,
                 PageSize = pageSize,
