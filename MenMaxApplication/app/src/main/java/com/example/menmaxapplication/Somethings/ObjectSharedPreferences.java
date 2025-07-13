@@ -1,4 +1,4 @@
-package com.example.fashionstoreapp.Somethings;
+package com.example.menmaxapplication.Somethings;
 
 import android.content.Context;
 import android.content.SharedPreferences;

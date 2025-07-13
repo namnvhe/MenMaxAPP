@@ -1,4 +1,4 @@
-package com.example.fashionstoreapp.Model;
+package com.example.menmaxapplication.Model;
 
 
 import com.google.gson.annotations.Expose;

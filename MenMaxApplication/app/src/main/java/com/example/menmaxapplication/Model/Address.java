@@ -1,4 +1,4 @@
-package com.example.fashionstoreapp.Model;
+package com.example.menmaxapplication.Model;
 
 public class Address {
     private String fullName;

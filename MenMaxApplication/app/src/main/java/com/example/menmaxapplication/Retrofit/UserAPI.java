@@ -1,6 +1,6 @@
-package com.example.fashionstoreapp.Retrofit;
+package com.example.menmaxapplication.Retrofit;
 
-import com.example.fashionstoreapp.Model.User;
+import com.example.menmaxapplication.Model.User;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
