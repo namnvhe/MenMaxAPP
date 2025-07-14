@@ -51,11 +51,21 @@ namespace MenMaxBackEnd.Controllers
         }
 
         [HttpGet("search")]
-        public ActionResult<List<ProductDto>> Search(string searchContent)
+        public ActionResult<List<ProductDto>> Search(string? searchContent)
         {
+          
+
             if (string.IsNullOrEmpty(searchContent))
             {
-                return BadRequest("Search content cannot be empty");
+                var product = _context.Products
+                .Include(p => p.Category)
+                .Include(p => p.ProductImages)
+                .Where(p => p.IsActive == 1)
+                .OrderBy(p => p.ProductName)
+                .ToList();
+
+                var productDto = _mapper.Map<List<ProductDto>>(product);
+                return Ok(productDto);
             }
 
             // Tìm kiếm sản phẩm theo tên có chứa từ khóa
@@ -72,6 +82,24 @@ namespace MenMaxBackEnd.Controllers
             return Ok(productDtos);
         }
 
+        [HttpGet("LoadAll")]
+        public ActionResult<List<ProductDto>> LoadAll()
+        {
+
+
+
+                var product = _context.Products
+                .Include(p => p.Category)
+                .Include(p => p.ProductImages)
+                .Where(p => p.IsActive == 1)
+                .OrderBy(p => p.ProductName)
+                .ToList();
+
+                var productDto = _mapper.Map<List<ProductDto>>(product);
+                return Ok(productDto);
+            
+
+        }
         [HttpGet]
         public ActionResult<List<ProductDto>> GetAllProducts()
         {

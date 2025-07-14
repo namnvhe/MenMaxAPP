@@ -4,28 +4,65 @@ using System.Text.Json;
 using System.Text;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using AutoMapper;
 
 namespace MenMaxBackEnd.Controllers
 {
+    public class ResponseEntity<T>
+    {
+        public T Value { get; set; }
+        public HttpStatus StatusCode { get; set; }
+
+        public ResponseEntity(T value, HttpStatus statusCode)
+        {
+            Value = value;
+            StatusCode = statusCode;
+        }
+
+        public ResponseEntity(HttpStatus statusCode)
+        {
+            StatusCode = statusCode;
+        }
+
+        public static implicit operator ActionResult<T>(ResponseEntity<T> response)
+        {
+            return new ObjectResult(response.Value)
+            {
+                StatusCode = (int)response.StatusCode
+            };
+        }
+    }
+
+    // ✅ Định nghĩa HttpStatus enum
+    public enum HttpStatus
+    {
+        OK = 200,
+        NotFound = 404,
+        NotAcceptable = 406,
+        InternalServerError = 500
+    }
+
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("")]
     public class UserController : ControllerBase
     {
         private readonly MenMaxContext _context;
         private readonly IConfiguration _configuration;
+        private readonly IMapper _mapper;
 
-        public UserController(MenMaxContext context, IConfiguration configuration)
+        public UserController(MenMaxContext context, IConfiguration configuration, IMapper mapper)
         {
             _context = context;
             _configuration = configuration;
+            _mapper = mapper;
         }
 
+        // ✅ GET /login - trả về UserDto
         [HttpGet("login")]
-        public ActionResult<User> Login(string id, string password)
+        public ResponseEntity<UserDto> Login(string id, string password)
         {
             Console.WriteLine(id);
 
-            // Tìm user trực tiếp từ database
             var userFind = _context.Users.FirstOrDefault(u => u.Id == id && u.Role == "user");
 
             if (userFind != null && !string.IsNullOrEmpty(userFind.Password))
@@ -36,28 +73,29 @@ namespace MenMaxBackEnd.Controllers
                 if (password.Equals(decodedValue))
                 {
                     userFind.Password = decodedValue;
-                    return Ok(userFind);
+                    var userDto = _mapper.Map<UserDto>(userFind);
+                    return new ResponseEntity<UserDto>(userDto, HttpStatus.OK);
                 }
                 else
                 {
-                    return BadRequest("Invalid password");
+                    return null;
                 }
             }
             else
             {
-                return Ok(userFind);
+                var userDto = userFind != null ? _mapper.Map<UserDto>(userFind) : null;
+                return new ResponseEntity<UserDto>(userDto, HttpStatus.OK);
             }
         }
 
         [HttpPost("signup")]
-        public ActionResult<User> SignUp([FromForm] string username, [FromForm] string fullname,
-                                       [FromForm] string email, [FromForm] string password)
+        [Consumes("application/x-www-form-urlencoded")]
+        public ResponseEntity<UserDto> SignUp([FromForm] string username, [FromForm] string fullname, [FromForm] string email, [FromForm] string password)
         {
-            // Kiểm tra user đã tồn tại
             var existingUser = _context.Users.FirstOrDefault(u => u.Id == username && u.Role == "user");
             if (existingUser != null)
             {
-                return Ok(null);
+                return new ResponseEntity<UserDto>(null, HttpStatus.OK);
             }
             else
             {
@@ -76,26 +114,43 @@ namespace MenMaxBackEnd.Controllers
                     PhoneNumber = null
                 };
 
-                // Lưu user mới vào database
                 _context.Users.Add(newUser);
                 _context.SaveChanges();
 
-                Console.WriteLine(newUser);
-                return Ok(newUser);
+                // ✅ Debug: Kiểm tra User entity
+                Console.WriteLine($"Saved User - ID: {newUser.Id}, Name: {newUser.UserName}, Email: {newUser.Email}");
+
+                // ✅ Kiểm tra AutoMapper trước khi map
+                if (_mapper == null)
+                {
+                    throw new InvalidOperationException("AutoMapper is not configured properly");
+                }
+
+                var userDto = _mapper.Map<UserDto>(newUser);
+
+                // ✅ Debug: Kiểm tra UserDto
+                Console.WriteLine($"Mapped DTO - ID: {userDto?.Id}, Name: {userDto?.UserName}, Email: {userDto?.Email}");
+
+                if (userDto == null)
+                {
+                    throw new InvalidOperationException("AutoMapper returned null UserDto");
+                }
+
+                return new ResponseEntity<UserDto>(userDto, HttpStatus.OK);
             }
         }
 
+
+        // ✅ POST /forgot - giữ nguyên trả về string
         [HttpPost("forgot")]
-        public ActionResult<string> ForgotPassword([FromForm] string id)
+        public string ForgotPassword([FromForm] string id)
         {
-            // Tìm user từ database
             var user = _context.Users.FirstOrDefault(u => u.Id == id && u.Role == "user");
             if (user != null)
             {
                 Random random = new Random();
-                int code = random.Next(100000, 999999);
+                int code = (int)Math.Floor(((random.NextDouble() * 899999) + 100000));
 
-                // Gửi email trực tiếp
                 try
                 {
                     var smtpClient = new SmtpClient(_configuration["Email:SmtpServer"])
@@ -119,98 +174,94 @@ namespace MenMaxBackEnd.Controllers
 
                     smtpClient.Send(mailMessage);
 
-                    // Lưu code vào session
                     HttpContext.Session.SetString("code", code.ToString());
                     Console.WriteLine(code);
 
-                    return Ok(JsonSerializer.Serialize(code.ToString()));
+                    return code.ToString();
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Error sending email: {ex.Message}");
-                    return StatusCode(500, "Error sending email");
+                    return null;
                 }
             }
             else
             {
-                return NotFound();
+                return null;
             }
         }
 
+        // ✅ POST /forgotnewpass - giữ nguyên trả về string
         [HttpPost("forgotnewpass")]
-        public ActionResult<string> ForgotNewPass([FromForm] string id, [FromForm] string code,
-                                                [FromForm] string password)
+        [Consumes("application/x-www-form-urlencoded")]
+        public string ForgotNewPass([FromForm] string id, [FromForm] string code, [FromForm] string password)
         {
-            // Tìm user từ database
             var user = _context.Users.FirstOrDefault(u => u.Id == id && u.Role == "user");
             if (user != null)
             {
                 string encodedValue = Convert.ToBase64String(Encoding.UTF8.GetBytes(password));
                 user.Password = encodedValue;
 
-                // Cập nhật user trong database
                 _context.Users.Update(user);
                 _context.SaveChanges();
 
-                return Ok(password);
+                return password;
             }
             else
             {
-                return StatusCode(406);
+                return null;
             }
         }
 
+        // ✅ POST /changepassword - giữ nguyên trả về string
         [HttpPost("changepassword")]
-        public ActionResult<string> ChangePassword([FromForm] string id, [FromForm] string password)
+        [Consumes("application/x-www-form-urlencoded")]
+        public ResponseEntity<string> ChangePassword( [FromForm] string id, [FromForm] string password)
         {
-            // Tìm user từ database
             var user = _context.Users.FirstOrDefault(u => u.Id == id && u.Role == "user");
             if (user != null)
             {
                 string encodedValue = Convert.ToBase64String(Encoding.UTF8.GetBytes(password));
                 user.Password = encodedValue;
 
-                // Cập nhật user trong database
                 _context.Users.Update(user);
                 _context.SaveChanges();
 
-                return Ok(password);
+                return new ResponseEntity<string>(password, HttpStatus.OK);
             }
             else
             {
-                return StatusCode(406);
+                return new ResponseEntity<string>(HttpStatus.NotAcceptable);
             }
         }
 
-       /* [HttpPost("update")]
-        public ActionResult<User> UpdateAvatar([FromForm] string id, [FromForm] IFormFile? avatar,
-                                             [FromForm] string fullname, [FromForm] string email,
-                                             [FromForm] string phoneNumber)
+        // ✅ POST /update - trả về UserDto
+        [HttpPost("update")]
+        [Consumes("multipart/form-data")]
+        public ResponseEntity<UserDto> UpdateAvatar ( [FromForm] string id, IFormFile avatar, string fullname,
+                                                   string email, string phoneNumber, string address)
         {
-            // Tìm user từ database
             var user = _context.Users.FirstOrDefault(u => u.Id == id && u.Role == "user");
             if (user != null)
             {
                 if (avatar != null)
                 {
-                    // Upload file lên Cloudinary trực tiếp
-                    var cloudinary = new Cloudinary(_configuration["Cloudinary:CloudinaryUrl"]);
-
-                    var uploadParams = new ImageUploadParams()
-                    {
-                        File = new FileDescription(avatar.FileName, avatar.OpenReadStream()),
-                        Folder = "FashionStore"
-                    };
-
-                    var uploadResult = cloudinary.Upload(uploadParams);
-                    user.Avatar = uploadResult.SecureUrl.ToString();
+                    // ✅ Implement Cloudinary upload nếu cần
+                    // var cloudinary = new Cloudinary(_configuration["Cloudinary:CloudinaryUrl"]);
+                    // var uploadParams = new ImageUploadParams()
+                    // {
+                    //     File = new FileDescription(avatar.FileName, avatar.OpenReadStream()),
+                    //     Folder = "FashionStore"
+                    // };
+                    // var uploadResult = cloudinary.Upload(uploadParams);
+                    // user.Avatar = uploadResult.SecureUrl.ToString();
                 }
 
                 user.UserName = fullname;
                 user.Email = email;
                 user.PhoneNumber = phoneNumber;
+                // user.Address = address;
 
-                // Cập nhật user trong database
                 _context.Users.Update(user);
                 _context.SaveChanges();
 
@@ -219,19 +270,20 @@ namespace MenMaxBackEnd.Controllers
                     user.Password = Encoding.UTF8.GetString(Convert.FromBase64String(user.Password));
                 }
 
-                return Ok(user);
+                var userDto = _mapper.Map<UserDto>(user);
+                return new ResponseEntity<UserDto>(userDto, HttpStatus.OK);
             }
             else
             {
-                return StatusCode(406);
+                return new ResponseEntity<UserDto>(HttpStatus.NotAcceptable);
             }
-        }*/
+        }
 
+        // ✅ POST /google - trả về UserDto
         [HttpPost("google")]
-        public ActionResult<User> LoginWithGoogle([FromForm] string id, [FromForm] string fullname,
-                                                [FromForm] string email, [FromForm] string avatar)
+        [Consumes("application/x-www-form-urlencoded")]
+        public UserDto LoginWithGoogle([FromForm] string id, [FromForm] string fullname, [FromForm] string email, [FromForm] string avatar)
         {
-            // Tìm user từ database
             var user = _context.Users.FirstOrDefault(u => u.Id == id && u.Role == "user");
             if (user == null)
             {
@@ -244,15 +296,15 @@ namespace MenMaxBackEnd.Controllers
                     UserName = fullname,
                     Avatar = avatar,
                     Email = email,
-                    PhoneNumber = null
+                   
                 };
 
-                // Lưu user mới vào database
                 _context.Users.Add(user);
                 _context.SaveChanges();
             }
-
-            return Ok(user);
+            
+            var userDto = _mapper.Map<UserDto>(user);
+            return userDto;
         }
     }
 }

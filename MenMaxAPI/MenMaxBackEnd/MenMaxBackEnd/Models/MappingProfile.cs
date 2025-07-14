@@ -13,9 +13,9 @@ namespace MenMaxBackEnd.Profiles
 
             // User mappings
             CreateMap<User, UserDto>()
-                .ForMember(dest => dest.LoginType, opt => opt.MapFrom(src => src.LoginType))
-                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.UserName))
-                .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber));
+         .ForMember(dest => dest.LoginType, opt => opt.MapFrom(src => src.LoginType))
+         .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.UserName))
+         .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber));
 
             CreateMap<UserDto, User>()
                 .ForMember(dest => dest.LoginType, opt => opt.MapFrom(src => src.LoginType))

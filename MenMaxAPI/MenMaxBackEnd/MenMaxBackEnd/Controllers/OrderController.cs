@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿
 using MenMaxBackEnd.Models;
-using MenMaxBackEnd.Services;
-using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.Json.Serialization;
 
 namespace MenMaxBackEnd.Controllers
 {
@@ -11,14 +14,10 @@ namespace MenMaxBackEnd.Controllers
     public class OrderController : ControllerBase
     {
         private readonly MenMaxContext _context;
-        private readonly ModelMapper _modelMapper;
 
-        public OrderController(
-            MenMaxContext context,
-            ModelMapper modelMapper)
+        public OrderController(MenMaxContext context)
         {
             _context = context;
-            _modelMapper = modelMapper;
         }
 
         [HttpPost("placeorder")]
@@ -31,9 +30,9 @@ namespace MenMaxBackEnd.Controllers
         {
             try
             {
-                // ✅ Lấy danh sách cart của user trực tiếp từ context
                 var listCart = _context.Carts
                     .Include(c => c.Product)
+                        .ThenInclude(p => p.ProductImages)
                     .Include(c => c.User)
                     .Where(c => c.UserId == user_id)
                     .ToList();
@@ -43,7 +42,6 @@ namespace MenMaxBackEnd.Controllers
                     return BadRequest("Cart is empty");
                 }
 
-                // ✅ Tìm user trực tiếp từ context
                 var user = _context.Users
                     .FirstOrDefault(u => u.Id == user_id && u.Role == "user");
 
@@ -52,7 +50,6 @@ namespace MenMaxBackEnd.Controllers
                     return BadRequest("User not found");
                 }
 
-                // ✅ Tạo order mới
                 var newOrder = new Order
                 {
                     UserId = user_id,
@@ -68,7 +65,6 @@ namespace MenMaxBackEnd.Controllers
                     Total = 0
                 };
 
-                // ✅ Tính tổng tiền
                 int total = 0;
                 foreach (var cart in listCart)
                 {
@@ -76,28 +72,22 @@ namespace MenMaxBackEnd.Controllers
                 }
                 newOrder.Total = total;
 
-                // ✅ Lưu order trực tiếp vào context
                 _context.Orders.Add(newOrder);
                 _context.SaveChanges();
 
-                // ✅ Xử lý từng item trong cart
                 foreach (var cart in listCart)
                 {
-                    // Kiểm tra số lượng tồn kho
                     if (cart.Count > cart.Product.Quantity)
                     {
-                        // Xóa order nếu không đủ hàng
                         _context.Orders.Remove(newOrder);
                         _context.SaveChanges();
                         return BadRequest($"Insufficient stock for product: {cart.Product.ProductName}");
                     }
 
-                    // Cập nhật số lượng và sold của product
                     cart.Product.Quantity -= cart.Count;
                     cart.Product.Sold += cart.Count;
                     _context.Products.Update(cart.Product);
 
-                    // Tạo order item
                     var newOrderItem = new OrderItem
                     {
                         Count = cart.Count,
@@ -106,14 +96,11 @@ namespace MenMaxBackEnd.Controllers
                     };
                     _context.OrderItems.Add(newOrderItem);
 
-                    // Xóa cart item
                     _context.Carts.Remove(cart);
                 }
 
-                // ✅ Lưu tất cả thay đổi
                 _context.SaveChanges();
 
-                // ✅ Lấy order đã hoàn thành với đầy đủ thông tin
                 var completedOrder = _context.Orders
                     .Include(o => o.User)
                     .Include(o => o.OrderItems)
@@ -121,7 +108,45 @@ namespace MenMaxBackEnd.Controllers
                             .ThenInclude(p => p.ProductImages)
                     .FirstOrDefault(o => o.Id == newOrder.Id);
 
-                var orderDto = _modelMapper.Map<Order, OrderDto>(completedOrder);
+                var orderDto = new OrderDto
+                {
+                    Id = completedOrder.Id,
+                    Total = (int)completedOrder.Total,
+                    BookingDate = completedOrder.BookingDate,
+                    PaymentMethod = completedOrder.PaymentMethod,
+                    Status = completedOrder.Status,
+                    Fullname = completedOrder.Fullname,
+                    Country = completedOrder.Country,
+                    Address = completedOrder.Address,
+                    Phone = completedOrder.Phone,
+                    Email = completedOrder.Email,
+                    Note = completedOrder.Note,
+                    OrderItems = completedOrder.OrderItems?.Select(oi => new OrderItemDto
+                    {
+                        Id = oi.Id,
+                        Count = (int)oi.Count,
+                        Product = new ProductDto
+                        {
+                            Id = oi.Product.Id,
+                            ProductName = oi.Product.ProductName,
+                            Description = oi.Product.Description,
+                            Sold = (int)oi.Product.Sold,
+                            IsActive = (int)oi.Product.IsActive,
+                            IsSelling = (int)oi.Product.IsSelling,
+                            CreatedAt = oi.Product.CreatedAt,
+                            Price = oi.Product.Price ?? 0,
+                            Quantity = (int)oi.Product.Quantity,
+                            ProductImages = oi.Product.ProductImages?.Select(pi => new ProductImageDto
+                            {
+                                Id = pi.Id,
+                                UrlImage = pi.UrlImage
+                            }).ToList() ?? new List<ProductImageDto>(),
+                            CartDto = null
+                        }
+                    }).ToList() ?? new List<OrderItemDto>(),
+                    User = null // Avoid cycle
+                };
+
                 return Ok(orderDto);
             }
             catch (Exception ex)
@@ -143,7 +168,6 @@ namespace MenMaxBackEnd.Controllers
                     return BadRequest("User ID is required");
                 }
 
-                // ✅ Lấy danh sách order trực tiếp từ context
                 var listOrder = _context.Orders
                     .Include(o => o.User)
                     .Include(o => o.OrderItems)
@@ -153,13 +177,44 @@ namespace MenMaxBackEnd.Controllers
                     .OrderByDescending(o => o.BookingDate)
                     .ToList();
 
-                var listOrderDto = new List<OrderDto>();
-                foreach (var order in listOrder)
+                var listOrderDto = listOrder.Select(o => new OrderDto
                 {
-                    var orderDto = _modelMapper.Map<Order, OrderDto>(order);
-                    Console.WriteLine($"Order ID: {orderDto.Id}");
-                    listOrderDto.Add(orderDto);
-                }
+                    Id = o.Id,
+                    Total = (int)o.Total,
+                    BookingDate = o.BookingDate,
+                    PaymentMethod = o.PaymentMethod,
+                    Status = o.Status,
+                    Fullname = o.Fullname,
+                    Country = o.Country,
+                    Address = o.Address,
+                    Phone = o.Phone,
+                    Email = o.Email,
+                    Note = o.Note,
+                    OrderItems = o.OrderItems?.Select(oi => new OrderItemDto
+                    {
+                        Id = oi.Id,
+                        Count = (int)oi.Count,
+                        Product = new ProductDto
+                        {
+                            Id = oi.Product.Id,
+                            ProductName = oi.Product.ProductName,
+                            Description = oi.Product.Description,
+                            Sold = (int)oi.Product.Sold,
+                            IsActive = (int)oi.Product.IsActive,
+                            IsSelling = (int)oi.Product.IsSelling,
+                            CreatedAt = oi.Product.CreatedAt,
+                            Price = oi.Product.Price ?? 0,
+                            Quantity = (int)oi.Product.Quantity,
+                            ProductImages = oi.Product.ProductImages?.Select(pi => new ProductImageDto
+                            {
+                                Id = pi.Id,
+                                UrlImage = pi.UrlImage
+                            }).ToList() ?? new List<ProductImageDto>(),
+                            CartDto = null
+                        }
+                    }).ToList() ?? new List<OrderItemDto>(),
+                    User = null // Avoid cycle
+                }).ToList();
 
                 return Ok(listOrderDto);
             }
@@ -184,7 +239,6 @@ namespace MenMaxBackEnd.Controllers
                     return BadRequest("User ID and payment method are required");
                 }
 
-                // ✅ Lấy order theo payment method trực tiếp từ context
                 var listOrder = _context.Orders
                     .Include(o => o.User)
                     .Include(o => o.OrderItems)
@@ -194,17 +248,44 @@ namespace MenMaxBackEnd.Controllers
                     .OrderByDescending(o => o.BookingDate)
                     .ToList();
 
-                var listOrderDto = new List<OrderDto>();
-                foreach (var order in listOrder)
+                var listOrderDto = listOrder.Select(o => new OrderDto
                 {
-                    var orderDto = _modelMapper.Map<Order, OrderDto>(order);
-                    listOrderDto.Add(orderDto);
-                }
-
-                foreach (var order in listOrder)
-                {
-                    Console.WriteLine($"Order ID: {order.Id}");
-                }
+                    Id = o.Id,
+                    Total = (int)o.Total,
+                    BookingDate = o.BookingDate,
+                    PaymentMethod = o.PaymentMethod,
+                    Status = o.Status,
+                    Fullname = o.Fullname,
+                    Country = o.Country,
+                    Address = o.Address,
+                    Phone = o.Phone,
+                    Email = o.Email,
+                    Note = o.Note,
+                    OrderItems = o.OrderItems?.Select(oi => new OrderItemDto
+                    {
+                        Id = oi.Id,
+                        Count = (int)oi.Count,
+                        Product = new ProductDto
+                        {
+                            Id = oi.Product.Id,
+                            ProductName = oi.Product.ProductName,
+                            Description = oi.Product.Description,
+                            Sold = (int)oi.Product.Sold,
+                            IsActive = (int)oi.Product.IsActive,
+                            IsSelling = (int)oi.Product.IsSelling,
+                            CreatedAt = oi.Product.CreatedAt,
+                            Price = oi.Product.Price ?? 0,
+                            Quantity = (int)oi.Product.Quantity,
+                            ProductImages = oi.Product.ProductImages?.Select(pi => new ProductImageDto
+                            {
+                                Id = pi.Id,
+                                UrlImage = pi.UrlImage
+                            }).ToList() ?? new List<ProductImageDto>(),
+                            CartDto = null
+                        }
+                    }).ToList() ?? new List<OrderItemDto>(),
+                    User = null // Avoid cycle
+                }).ToList();
 
                 return Ok(listOrderDto);
             }
@@ -225,7 +306,6 @@ namespace MenMaxBackEnd.Controllers
                     return BadRequest("User ID is required");
                 }
 
-                // ✅ Logic này đã đúng, giữ nguyên
                 var orders = _context.Orders
                     .Include(o => o.User)
                     .Include(o => o.OrderItems)
@@ -235,7 +315,45 @@ namespace MenMaxBackEnd.Controllers
                     .OrderByDescending(o => o.BookingDate)
                     .ToList();
 
-                var orderDtos = _modelMapper.MapList<Order, OrderDto>(orders);
+                var orderDtos = orders.Select(o => new OrderDto
+                {
+                    Id = o.Id,
+                    Total = (int)o.Total,
+                    BookingDate = o.BookingDate,
+                    PaymentMethod = o.PaymentMethod,
+                    Status = o.Status,
+                    Fullname = o.Fullname,
+                    Country = o.Country,
+                    Address = o.Address,
+                    Phone = o.Phone,
+                    Email = o.Email,
+                    Note = o.Note,
+                    OrderItems = o.OrderItems?.Select(oi => new OrderItemDto
+                    {
+                        Id = oi.Id,
+                        Count = (int)oi.Count,
+                        Product = new ProductDto
+                        {
+                            Id = oi.Product.Id,
+                            ProductName = oi.Product.ProductName,
+                            Description = oi.Product.Description,
+                            Sold = (int)oi.Product.Sold,
+                            IsActive = (int)oi.Product.IsActive,
+                            IsSelling = (int)oi.Product.IsSelling,
+                            CreatedAt = oi.Product.CreatedAt,
+                            Price = oi.Product.Price ?? 0,
+                            Quantity = (int)oi.Product.Quantity,
+                            ProductImages = oi.Product.ProductImages?.Select(pi => new ProductImageDto
+                            {
+                                Id = pi.Id,
+                                UrlImage = pi.UrlImage
+                            }).ToList() ?? new List<ProductImageDto>(),
+                            CartDto = null
+                        }
+                    }).ToList() ?? new List<OrderItemDto>(),
+                    User = null // Avoid cycle
+                }).ToList();
+
                 return Ok(orderDtos);
             }
             catch (Exception ex)
@@ -250,7 +368,6 @@ namespace MenMaxBackEnd.Controllers
         {
             try
             {
-                // ✅ Tìm order trực tiếp từ context
                 var order = _context.Orders
                     .Include(o => o.User)
                     .Include(o => o.OrderItems)
@@ -263,12 +380,49 @@ namespace MenMaxBackEnd.Controllers
                     return NotFound("Order not found");
                 }
 
-                // ✅ Cập nhật status và lưu trực tiếp
                 order.Status = status;
                 _context.Orders.Update(order);
                 _context.SaveChanges();
 
-                var orderDto = _modelMapper.Map<Order, OrderDto>(order);
+                var orderDto = new OrderDto
+                {
+                    Id = order.Id,
+                    Total = (int)order.Total,
+                    BookingDate = order.BookingDate,
+                    PaymentMethod = order.PaymentMethod,
+                    Status = order.Status,
+                    Fullname = order.Fullname,
+                    Country = order.Country,
+                    Address = order.Address,
+                    Phone = order.Phone,
+                    Email = order.Email,
+                    Note = order.Note,
+                    OrderItems = order.OrderItems?.Select(oi => new OrderItemDto
+                    {
+                        Id = oi.Id,
+                        Count = (int)oi.Count,
+                        Product = new ProductDto
+                        {
+                            Id = oi.Product.Id,
+                            ProductName = oi.Product.ProductName,
+                            Description = oi.Product.Description,
+                            Sold = (int)oi.Product.Sold,
+                            IsActive = (int)oi.Product.IsActive,
+                            IsSelling = (int)oi.Product.IsSelling,
+                            CreatedAt = oi.Product.CreatedAt,
+                            Price = oi.Product.Price ?? 0,
+                            Quantity = (int)oi.Product.Quantity,
+                            ProductImages = oi.Product.ProductImages?.Select(pi => new ProductImageDto
+                            {
+                                Id = pi.Id,
+                                UrlImage = pi.UrlImage
+                            }).ToList() ?? new List<ProductImageDto>(),
+                            CartDto = null
+                        }
+                    }).ToList() ?? new List<OrderItemDto>(),
+                    User = null // Avoid cycle
+                };
+
                 return Ok(orderDto);
             }
             catch (Exception ex)
@@ -283,7 +437,6 @@ namespace MenMaxBackEnd.Controllers
         {
             try
             {
-                // ✅ Logic này đã đúng, giữ nguyên
                 var order = _context.Orders
                     .Include(o => o.OrderItems)
                         .ThenInclude(oi => oi.Product)
@@ -299,7 +452,6 @@ namespace MenMaxBackEnd.Controllers
                     return BadRequest("Cannot cancel order that is not pending");
                 }
 
-                // ✅ Hoàn trả số lượng sản phẩm trực tiếp
                 foreach (var orderItem in order.OrderItems)
                 {
                     orderItem.Product.Quantity += orderItem.Count;
@@ -307,7 +459,6 @@ namespace MenMaxBackEnd.Controllers
                     _context.Products.Update(orderItem.Product);
                 }
 
-                // ✅ Cập nhật trạng thái order trực tiếp
                 order.Status = "Cancelled";
                 _context.Orders.Update(order);
                 _context.SaveChanges();
@@ -333,7 +484,6 @@ namespace MenMaxBackEnd.Controllers
                     return BadRequest("User ID and status are required");
                 }
 
-                // ✅ Lấy order theo status trực tiếp từ context
                 var orders = _context.Orders
                     .Include(o => o.User)
                     .Include(o => o.OrderItems)
@@ -343,7 +493,45 @@ namespace MenMaxBackEnd.Controllers
                     .OrderByDescending(o => o.BookingDate)
                     .ToList();
 
-                var orderDtos = _modelMapper.MapList<Order, OrderDto>(orders);
+                var orderDtos = orders.Select(o => new OrderDto
+                {
+                    Id = o.Id,
+                    Total = (int)o.Total,
+                    BookingDate = o.BookingDate,
+                    PaymentMethod = o.PaymentMethod,
+                    Status = o.Status,
+                    Fullname = o.Fullname,
+                    Country = o.Country,
+                    Address = o.Address,
+                    Phone = o.Phone,
+                    Email = o.Email,
+                    Note = o.Note,
+                    OrderItems = o.OrderItems?.Select(oi => new OrderItemDto
+                    {
+                        Id = oi.Id,
+                        Count = (int)oi.Count,
+                        Product = new ProductDto
+                        {
+                            Id = oi.Product.Id,
+                            ProductName = oi.Product.ProductName,
+                            Description = oi.Product.Description,
+                            Sold = (int)oi.Product.Sold,
+                            IsActive = (int)oi.Product.IsActive,
+                            IsSelling = (int)oi.Product.IsSelling,
+                            CreatedAt = oi.Product.CreatedAt,
+                            Price = oi.Product.Price ?? 0,
+                            Quantity = (int)oi.Product.Quantity,
+                            ProductImages = oi.Product.ProductImages?.Select(pi => new ProductImageDto
+                            {
+                                Id = pi.Id,
+                                UrlImage = pi.UrlImage
+                            }).ToList() ?? new List<ProductImageDto>(),
+                            CartDto = null
+                        }
+                    }).ToList() ?? new List<OrderItemDto>(),
+                    User = null // Avoid cycle
+                }).ToList();
+
                 return Ok(orderDtos);
             }
             catch (Exception ex)
@@ -363,7 +551,6 @@ namespace MenMaxBackEnd.Controllers
                     return BadRequest("User ID is required");
                 }
 
-                // ✅ Lấy chi tiết order trực tiếp từ context
                 var order = _context.Orders
                     .Include(o => o.User)
                     .Include(o => o.OrderItems)
@@ -376,7 +563,45 @@ namespace MenMaxBackEnd.Controllers
                     return NotFound("Order not found");
                 }
 
-                var orderDto = _modelMapper.Map<Order, OrderDto>(order);
+                var orderDto = new OrderDto
+                {
+                    Id = order.Id,
+                    Total = (int)order.Total,
+                    BookingDate = order.BookingDate,
+                    PaymentMethod = order.PaymentMethod,
+                    Status = order.Status,
+                    Fullname = order.Fullname,
+                    Country = order.Country,
+                    Address = order.Address,
+                    Phone = order.Phone,
+                    Email = order.Email,
+                    Note = order.Note,
+                    OrderItems = order.OrderItems?.Select(oi => new OrderItemDto
+                    {
+                        Id = oi.Id,
+                        Count = (int)oi.Count,
+                        Product = new ProductDto
+                        {
+                            Id = oi.Product.Id,
+                            ProductName = oi.Product.ProductName,
+                            Description = oi.Product.Description,
+                            Sold = (int)oi.Product.Sold,
+                            IsActive = (int)oi.Product.IsActive,
+                            IsSelling = (int)oi.Product.IsSelling,
+                            CreatedAt = oi.Product.CreatedAt,
+                            Price = oi.Product.Price ?? 0,
+                            Quantity = (int)oi.Product.Quantity,
+                            ProductImages = oi.Product.ProductImages?.Select(pi => new ProductImageDto
+                            {
+                                Id = pi.Id,
+                                UrlImage = pi.UrlImage
+                            }).ToList() ?? new List<ProductImageDto>(),
+                            CartDto = null
+                        }
+                    }).ToList() ?? new List<OrderItemDto>(),
+                    User = null // Avoid cycle
+                };
+
                 return Ok(orderDto);
             }
             catch (Exception ex)

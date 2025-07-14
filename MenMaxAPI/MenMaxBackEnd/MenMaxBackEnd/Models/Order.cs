@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace MenMaxBackEnd.Models;
 
@@ -35,17 +36,42 @@ public partial class Order
 }
 public class OrderDto
 {
+    [JsonPropertyName("id")]
     public int Id { get; set; }
+
+    [JsonPropertyName("total")]
     public int Total { get; set; }
-    public DateTime BookingDate { get; set; }
+
+    [JsonPropertyName("booking_Date")]
+    public DateOnly? BookingDate { get; set; } // Changed to string to match JSON format "YYYY-MM-DD"
+
+    [JsonPropertyName("payment_Method")]
     public string PaymentMethod { get; set; }
+
+    [JsonPropertyName("status")]
     public string Status { get; set; }
+
+    [JsonPropertyName("fullname")]
     public string Fullname { get; set; }
+
+    [JsonPropertyName("country")]
     public string Country { get; set; }
+
+    [JsonPropertyName("address")]
     public string Address { get; set; }
+
+    [JsonPropertyName("phone")]
     public string Phone { get; set; }
+
+    [JsonPropertyName("email")]
     public string Email { get; set; }
+
+    [JsonPropertyName("note")]
     public string Note { get; set; }
-    public List<OrderItemDto> OrderItems { get; set; }
+
+    [JsonPropertyName("order_Item")]
+    public List<OrderItemDto> OrderItems { get; set; } = new List<OrderItemDto>();
+
+    [JsonIgnore] // Ignore User to prevent serialization cycle
     public UserDto User { get; set; }
 }
