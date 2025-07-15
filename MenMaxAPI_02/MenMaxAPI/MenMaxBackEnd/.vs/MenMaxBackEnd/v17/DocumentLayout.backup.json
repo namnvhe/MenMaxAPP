@@ -1,0 +1,337 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|d:\\menmaxapp\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|d:\\menmaxapp\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|d:\\menmaxapp\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|d:\\menmaxapp\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|d:\\menmaxapp\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\models\\menmaxcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\models\\menmaxcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|d:\\menmaxapp\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\models\\modelmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\models\\modelmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|d:\\menmaxapp\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|d:\\menmaxapp\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|d:\\menmaxapp\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\models\\productimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\models\\productimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|d:\\menmaxapp\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|d:\\menmaxapp\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|d:\\menmaxapp\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|d:\\menmaxapp\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|d:\\menmaxapp\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\models\\admindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\models\\admindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|d:\\menmaxapp\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\models\\cart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\models\\cart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|d:\\menmaxapp\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|d:\\menmaxapp\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\models\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\models\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|d:\\menmaxapp\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|d:\\menmaxapp\\menmaxapp\\menmaxapi\\menmaxbackend\\menmaxbackend\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA50D8EC-F77A-40D5-B323-A1A9378C3ABF}|MenMaxBackEnd\\MenMaxBackEnd.csproj|solutionrelative:menmaxbackend\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Controllers\\UserController.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAFsCAAAAAAAAAAAAAGoCAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T14:54:49.228Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\Controllers\\CategoryController.cs",
+              "ToolTip": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\Controllers\\CategoryController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGIAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T15:11:06.678Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\User.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\Models\\User.cs",
+              "ToolTip": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\User.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T17:10:36.483Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Order.cs",
+              "DocumentMoniker": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\Models\\Order.cs",
+              "ToolTip": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\Order.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\Models\\Order.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAiwEAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T15:09:46.512Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ProductImage.cs",
+              "DocumentMoniker": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\ProductImage.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\Models\\ProductImage.cs",
+              "ToolTip": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\ProductImage.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\Models\\ProductImage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T03:29:58.939Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Product.cs",
+              "DocumentMoniker": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\Models\\Product.cs",
+              "ToolTip": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\Product.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\Models\\Product.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAADwv0gAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T03:18:45.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "OrderItem.cs",
+              "DocumentMoniker": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\OrderItem.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\Models\\OrderItem.cs",
+              "ToolTip": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\OrderItem.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\Models\\OrderItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T10:21:02.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ModelMapper.cs",
+              "DocumentMoniker": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\ModelMapper.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\Models\\ModelMapper.cs",
+              "ToolTip": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\ModelMapper.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\Models\\ModelMapper.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAA3wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T14:21:18.546Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MenMaxContext.cs",
+              "DocumentMoniker": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\MenMaxContext.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\Models\\MenMaxContext.cs",
+              "ToolTip": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\MenMaxContext.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\Models\\MenMaxContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T14:21:17.358Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\Controllers\\CartController.cs",
+              "ToolTip": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Controllers\\CartController.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\Controllers\\CartController.cs",
+              "ViewState": "AgIAAHAAAAAAAAAAAAAswJwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T08:22:09.592Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AdminDTO.cs",
+              "DocumentMoniker": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\AdminDTO.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\Models\\AdminDTO.cs",
+              "ToolTip": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\AdminDTO.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\Models\\AdminDTO.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAA6wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T14:21:07.121Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\Controllers\\ProductController.cs",
+              "ToolTip": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\Controllers\\ProductController.cs",
+              "ViewState": "AgIAACkBAAAAAAAAAADwv0cBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T03:18:52.853Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\Controllers\\OrderController.cs",
+              "ToolTip": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\Controllers\\OrderController.cs",
+              "ViewState": "AgIAADkCAAAAAAAAAADwv2YCAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T09:03:06.957Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAHUBAAAAAAAAAAAcwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T08:26:03.326Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Cart.cs",
+              "DocumentMoniker": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\Cart.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\Models\\Cart.cs",
+              "ToolTip": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\Cart.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\Models\\Cart.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T14:21:10.834Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Category.cs",
+              "DocumentMoniker": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\Models\\Category.cs",
+              "ToolTip": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\Category.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\Models\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T03:33:24.583Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\Models\\MappingProfile.cs",
+              "ToolTip": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Models\\MappingProfile.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\Models\\MappingProfile.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-14T14:21:15.994Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T09:03:10.189Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Program.cs",
+              "RelativeDocumentMoniker": "MenMaxBackEnd\\Program.cs",
+              "ToolTip": "D:\\MenMaxApp\\MenMaxAPP\\MenMaxAPI\\MenMaxBackEnd\\MenMaxBackEnd\\Program.cs",
+              "RelativeToolTip": "MenMaxBackEnd\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T10:02:19.863Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
